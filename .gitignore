@@ -1,0 +1,13 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# IntelliJ
+/.idea
+
+# dependencies
+/node_modules
+
+# Build output
+*.js
+
+yarn-debug.log*
+yarn-error.log*
