@@ -33,4 +33,4 @@ fastify.get('/', async (request) => {
 })
 
 /* Start the server */
-fastify.listen(2000).then(() => {})
+fastify.listen(2000, '0.0.0.0').then(() => {})
