@@ -16,6 +16,10 @@ const boards: {
     }
 } = {}
 
+/* Fun stats added as an afterthought, completely messing up the response */
+let requestCount = 0;
+let moveCount = 0;
+
 /* Bind request handler */
 fastify.get('/', async (request) => {
     const body = request.query as { id: string, fen: string, lightElapsedMs: string, darkElapsedMs: string, currentDateTime: string }
@@ -27,7 +31,12 @@ fastify.get('/', async (request) => {
             lastUpdateDateTime: body.currentDateTime || '',
             gameStartDateTime: boards[body.id]?.gameStartDateTime || body.currentDateTime
         }
+        moveCount++
     }
+    // @ts-ignore
+    boards['stats'] = {requestCount, moveCount}
+
+    requestCount++;
 
     return boards
 })
